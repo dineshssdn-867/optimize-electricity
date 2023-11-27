@@ -18,14 +18,14 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="/static/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="/static/css/responsive.css" rel="stylesheet" />
 </head>
 
 <body class="sub_page">
@@ -36,7 +36,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="">
+            <img src="/static/images/logo.png" alt="">
             <span>
               Electrochip
             </span>
@@ -50,20 +50,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"> About</a>
-                </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="service.html"> Service </a>
+                  <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="blog.html"> Blog </a>
+                  <a class="nav-link" href="{{ url_for('about') }}"> About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact </a>
+                  <a class="nav-link" href="{{ url_for('services') }}"> Service </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('check_for_faults') }}"> Check Faults </a>
                 </li>
               </ul>
             </div>
@@ -82,13 +79,13 @@
         <h2>
           Our Services
         </h2>
-        <img src="images/plug.png" alt="">
+        <img src="/static/images/plug.png" alt="">
       </div>
 
       <div class="service_container">
         <div class="box">
           <div class="img-box">
-            <img src="images/s1.png" class="img1" alt="">
+            <img src="/static/images/s1.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
@@ -101,7 +98,7 @@
         </div>
         <div class="box active">
           <div class="img-box">
-            <img src="images/s2.png" class="img1" alt="">
+            <img src="/static/images/s2.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
@@ -114,7 +111,7 @@
         </div>
         <div class="box">
           <div class="img-box">
-            <img src="images/s3.png" class="img1" alt="">
+            <img src="/static/images/s3.png" class="img1" alt="">
           </div>
           <div class="detail-box">
             <h5>
@@ -136,8 +133,8 @@
 
   
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.js"></script>
+  <script src="/static/js/jquery-3.4.1.min.js"></script>
+  <script src="/static/js/bootstrap.js"></script>
 
 
 </body>
