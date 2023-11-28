@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify, render_template
-from sklearn.neighbors import KNeighborsClassifier
-import pickle
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 from initalize_one_model import neigh
-
+import os
+from process_frames import allowed_file,process_video_persons
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = "uploads"
 
 @app.route('/')
 def home():
@@ -22,13 +22,9 @@ def services():
 def check_for_faults():
     return render_template('fault_detection.html')
 
-@app.route('/check_for_perons')
-def check_for_perons():
+@app.route('/check_for_persons')
+def check_for_persons():
     return render_template('person_detection.html')
-
-@app.route('/services')
-def services():
-    return render_template('service.html')
 
 
 @app.route('/calculate_power', methods=['POST'])
@@ -49,7 +45,7 @@ def calculate_power():
             return render_template('fault_detection.html',fault=result)
         except Exception as e:
             print(e)
-            return render('fault_detection.html')
+            return render_template('fault_detection.html')
 
 
 @app.route('/check_persons', methods=['POST'])
@@ -72,7 +68,6 @@ def check_persons():
         return redirect(url_for('home'))
 
     return redirect(request.url)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

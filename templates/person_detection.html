@@ -62,6 +62,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{url_for('check_for_faults')}}"> Check Faults </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('check_for_persons')}}"> Check for lights</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -78,7 +81,7 @@
     <div class="container ">
       <div class="heading_container">
         <h2>
-          Contact Us
+          Check for Persons
         </h2>
         <img src="/static/mages/plug.png" alt="">
       </div>
@@ -86,38 +89,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <form action="{{url_for('calculate_power')}}" method="POST">
-            <div>
-              <input type="text" placeholder="Phase_A_line_current" name="Phase_A_line_current">
-            </div>
-            <div>
-              <input type="text" placeholder="Phase_B_line_current" name="Phase_B_line_current" >
-            </div>
-            <div>
-              <input type="text" placeholder="Phase_C_line_current" name="Phase_C_line_current">
-            </div>
-            <div>
-              <input type="text" placeholder="Phase_A_line_voltage" name="Phase_A_line_voltage">
-            </div>
-            <div>
-              <input type="text" placeholder="Phase_B_line_voltage" name="Phase_B_line_voltage">
-            </div>
-            <div>
-              <input type="text" placeholder="Phase_C_line_voltage" name="Phase_C_line_voltage">
-            </div>
-            <div class="detail-box">
-              <h5>
-                <input type="submit" value="SEND">
-              </h5>
-            </div>
-            {% if fault %}
-            <div class="detail-box">
-              <h3>
-                This is {{fault}} System
-              </h3>
-            </div>
-            {% else %}
-            {% endif %}
+              <form method="post" enctype="multipart/form-data" action="{{ url_for('check_persons') }}">
+                <input type="file" name="file">
+                <input type="submit" value="Upload">
           </form>
         </div>
         <div class="col-md-6">
