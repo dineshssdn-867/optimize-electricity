@@ -22,6 +22,14 @@ def services():
 def check_for_faults():
     return render_template('fault_detection.html')
 
+@app.route('/check_for_perons')
+def check_for_perons():
+    return render_template('person_detection.html')
+
+@app.route('/services')
+def services():
+    return render_template('service.html')
+
 
 @app.route('/calculate_power', methods=['POST'])
 def calculate_power():
@@ -42,6 +50,28 @@ def calculate_power():
         except Exception as e:
             print(e)
             return render('fault_detection.html')
+
+
+@app.route('/check_persons', methods=['POST'])
+def check_persons():
+    if 'file' not in request.files:
+        return redirect(request.url)
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        file.save(filename)
+
+        output_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'output.mp4')
+        process_video_persons(filename, output_filename)
+
+        return redirect(url_for('home'))
+
+    return redirect(request.url)
 
 
 if __name__ == '__main__':
